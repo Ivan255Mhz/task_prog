@@ -13,15 +13,15 @@ private:
     bool completed_task;
 
 public:
-    sub_task(const task *parent = nullptr);
+    sub_task( task *parent = nullptr);
 
-    sub_task(const std::string &name, const task *parent = nullptr);
+    sub_task(const std::string &name,  task *parent = nullptr);
 
-    sub_task(const std::string &name, const std::string &text, const task *parent = nullptr);
+    sub_task(const std::string &name, const std::string &text,  task *parent = nullptr);
 
-    sub_task(const char *name, const task *parent = nullptr);
+    sub_task(const char *name,  task *parent = nullptr);
 
-    sub_task(const char *name, const char *text, const task *parent = nullptr);
+    sub_task(const char *name, const char *text, task *parent = nullptr);
 
     const std::string get_name_task() const;
 

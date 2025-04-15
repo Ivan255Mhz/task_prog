@@ -33,3 +33,30 @@ const std::string task::get_text_task() const
 {
     return text_task;
 }
+
+void task::sub_task_display() const 
+{
+    int i=1;
+    for( const sub_task &task: tasks_list )
+    {
+        std::cout<<i<<'.';
+        task.display();
+        std::cout<<std::endl;
+    }
+}
+
+void task::display() const 
+{
+    std::cout << "Задача: " << name_task << std::endl;
+    std::cout<<"Подзадачи: "<<std::endl;
+    if(tasks_list.size()!=0)
+    {
+        sub_task_display();
+    }
+    else
+    {
+        std::cout<<"-----"<<std::endl;
+    }
+    std::cout << "Описание: " << text_task << std::endl;
+}
+

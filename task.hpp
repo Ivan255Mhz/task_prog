@@ -12,6 +12,8 @@ private:
     std::string text_task;
     std::list<sub_task> tasks_list;
 
+    void sub_task_display() const ;
+
 public:
     task();
 
