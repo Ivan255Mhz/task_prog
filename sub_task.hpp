@@ -1,7 +1,10 @@
-#pragma once
+
+#ifndef SUB_TASK_HPP
+#define SUB_TASK_HPP
 
 #include <iostream>
-#include "task.hpp"
+
+class task;
 
 class sub_task
 {
@@ -37,3 +40,5 @@ public:
 
     void display() const;
 };
+
+#endif

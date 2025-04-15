@@ -1,15 +1,16 @@
 #include "sub_task.hpp"
+#include "task.hpp"
 
 // Конструкторы demo--
-sub_task::sub_task( task *parent = nullptr) : completed_task(false), parent_task(parent) {}
+sub_task::sub_task( task *parent) : completed_task(false), parent_task(parent) {}
 
-sub_task::sub_task(const std::string &name,  task *parent = nullptr) : name_task(name), completed_task(false), parent_task(parent) {}
+sub_task::sub_task(const std::string &name,  task *parent) : name_task(name), completed_task(false), parent_task(parent) {}
 
-sub_task::sub_task(const std::string &name, const std::string &text,  task *parent = nullptr) : name_task(name), text_task(text), completed_task(false), parent_task(parent) {}
+sub_task::sub_task(const std::string &name, const std::string &text,  task *parent ) : name_task(name), text_task(text), completed_task(false), parent_task(parent) {}
 
-sub_task::sub_task(const char *name,  task *parent = nullptr) : name_task(name), completed_task(false), parent_task(parent) {}
+sub_task::sub_task(const char *name,  task *parent ) : name_task(name), completed_task(false), parent_task(parent) {}
 
-sub_task::sub_task(const char *name, const char *text,  task *parent = nullptr) : name_task(name), text_task(text), completed_task(false), parent_task(parent) {}
+sub_task::sub_task(const char *name, const char *text,  task *parent ) : name_task(name), text_task(text), completed_task(false), parent_task(parent) {}
 
 const std::string sub_task::get_name_task() const
 {
@@ -39,6 +40,6 @@ void sub_task::check_mark()
 void sub_task::display() const
 {
 
-    std::cout << "Задача: " << name_task << std::endl;
+    std::cout << "Подзадача: " << name_task << std::endl;
     std::cout << "Описание: " << text_task << std::endl;
 }

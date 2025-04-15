@@ -1,62 +1,80 @@
-#pragma once
+
+#ifndef TASK_HPP
+#define TASK_HPP
+
 #include <iostream>
 #include <list>
-#include "sub_task.hpp"
+
 #include <iterator>
 
-class task
+class sub_task;
+
+namespace prg
 {
 
-private:
-    std::string name_task;
-    std::string text_task;
-    std::list<sub_task> tasks_list;
-
-    void sub_task_display() const ;
-
-public:
-    task();
-
-    task(const std::string &name);
-
-    task(const char *name);
-
-    task(const std::string &name, const sub_task &sub);
-
-    task(const char *name, const sub_task &sub);
-
-    // Шаблонный конструктор demo--
-    template <class InIter>
-    task(const std::string &name, InIter begin, InIter end) : name_task(name)
+    class task
     {
-        tasks_list.assign(begin, end);
-    }
 
-    template <class InIter>
+    private:
+        static size_t task_id;
+        std::string name_task;
+        std::string text_task;
+        std::list<sub_task> tasks_list;
 
-    task(const char *name, InIter begin, InIter end) : task(std::string(name), begin, end){}
+        void sub_task_display() const;
 
-    task(const std::string &name, const std::string &text);
+    public:
+        task();
 
-    task(const char *name, const char *text);
+        task(const std::string &name);
 
-    task(const std::string &name, const std::string &text, const sub_task &sub);
+        task(const char *name);
 
-    task(const char *name, const char *text, const sub_task &sub);
+        task(const std::string &name, const sub_task &sub);
 
-    // Шаблонный конструктор demo--
-    template <class InIter>
-    task(const std::string &name, const std::string &text, InIter begin, InIter end) : name_task(name), text_task(text)
-    {
-        tasks_list.assign(begin, end);
-    }
+        task(const char *name, const sub_task &sub);
 
-    template <class InIter>
-    task(const char *name, const char *text, InIter begin, InIter end) : task(std::string(name), std::string(text), begin, end) {}
+        // Шаблонный конструктор demo--
+        template <class InIter>
+        task(const std::string &name, InIter begin, InIter end) : name_task(name)
+        {
+            tasks_list.assign(begin, end);
+        }
 
-    const std::string get_name_task() const;
+        template <class InIter>
 
-    const std::string get_text_task() const;
+        task(const char *name, InIter begin, InIter end) : task(std::string(name), begin, end)
+        {
+        }
 
-    void display() const;
-};
+        task(const std::string &name, const std::string &text);
+
+        task(const char *name, const char *text);
+
+        task(const std::string &name, const std::string &text, const sub_task &sub);
+
+        task(const char *name, const char *text, const sub_task &sub);
+
+        // Шаблонный конструктор demo--
+        template <class InIter>
+        task(const std::string &name, const std::string &text, InIter begin, InIter end) : name_task(name), text_task(text)
+        {
+            tasks_list.assign(begin, end);
+        }
+
+        template <class InIter>
+        task(const char *name, const char *text, InIter begin, InIter end) : task(std::string(name), std::string(text), begin, end) {}
+
+        const std::string get_name_task() const;
+
+        const std::string get_text_task() const;
+
+        size_t number_of_subtasks() const;
+
+        size_t number_of_active_subtasks() const;
+
+        void display() const;
+    };
+}
+
+#endif
